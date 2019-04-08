@@ -52,6 +52,8 @@ class App extends Component {
             >
             { ({
                 handleSubmit,
+                handleBlur,
+                handleChange,
                 isSubmitting,
             }) => (
                 
@@ -61,10 +63,10 @@ class App extends Component {
                     <button type="submit" disabled={ isSubmitting } className="btn btn-primary">Enregistrer</button>
                   </div>
 
-                  <Field onBlur={this.hideUserMsg} placeholder="firstName" label="firstName" name="firstName" type="text" component={ CustomInput } />
+                  <Field onChange={e => { handleChange(e); this.hideUserMsg();}} onBlur={e => { handleBlur(e); this.hideUserMsg();}} placeholder="firstName" label="firstName" name="firstName" type="text" component={ CustomInput } />
                   <ErrorMessage name="firstName" component={ CustomError } />
 
-                  <Field placeholder="lastName" label="lastName" name="lastName" type="text" component={ CustomInput } />
+                  <Field onChange={e => { handleChange(e); this.hideUserMsg();}} placeholder="lastName" label="lastName" name="lastName" type="text" component={ CustomInput } />
                   <ErrorMessage name="lastName" component={ CustomError } />
 
                 </form>                
